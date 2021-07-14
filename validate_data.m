@@ -7,7 +7,7 @@ function validate_data(data, dim_mfld)
     
     [~, ~, which] = unique(data, 'rows');
     ind = arrayfun(@(i) mat2str(find(which==i)), find(accumarray(which,1)>1), 'un', false);
-    assert(isempty(ind), 'There should be no duplicate points. The following are point_ids are duplicates: %s\n', horzcat(ind{:}))
+    assert(isempty(ind), 'There should be no duplicate points. The following point_ids are duplicates: %s\n', horzcat(ind{:}))
     
     N_data_min = get_min_points_for_regression(dim_mfld, size(data,2))*CurvParams.init_redundancy_factor;
     assert(size(data,1)>= N_data_min, sprintf('Need at least %d data points for manifold dimension %d', N_data_min, dim_mfld));

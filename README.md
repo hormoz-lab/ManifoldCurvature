@@ -34,7 +34,7 @@ If you are installing on a cluster machine, the MATLAB path file will be read-on
 
 ## Usage
 
-The main function is `manifold_curvature`, which computes scalar curvatures at an automatically chosen length scale for each point.
+The main function is `manifold_curvature`, which computes scalar curvatures at a different length scale for each point so that the uncertainty in the Second Fundamental Form coefficients are upper-bounded by `se_targ`.
 
 ```MATLAB
 >> help manifold_curvature
@@ -95,6 +95,42 @@ The main function is `manifold_curvature`, which computes scalar curvatures at a
  
     Authors: Duluxan Sritharan & Shu Wang. Harvard Medical School.
 
+To choose `se_targ`, use the `calibrate_neighborhoods` function and verify if the distribution of GOF p-values is flat and the neighborhood sizes are appropriate given the global length scale of the data.
+
+```MATLAB
+>> help calibrate_neighborhoods
+```
+
+    calibrate_neighborhoods computes point-wise ball radii for regression
+ 
+    [BALL_R, CALIB_POINTS, GOF, N_NEIGHBORS] = ...
+    calibrate_neighborhoods(DATA, DIM_MFLD, SE_TARG) computes the ball 
+    radius at each point (row of DATA) needed to achieve a target 
+    uncertainty of SE_TARG for the diagonal coefficients in the Second 
+    Fundamental Form, assuming the manifold dimension is DIM_MFLD. 
+    CALIB_POINTS is a vector of point IDs for which calibration was 
+    successful, and BALL_R is a vector of corresponding ball radii. The
+    function also returns goodness-of-fits, GOF, and the number of points 
+    in the ball, N_NEIGHBORS, for each calibration point.
+ 
+    [BALL_R, CALIB_POINTS, GOF, N_NEIGHBORS] = ...
+    calibrate_neighborhoods(DATA, DIM_MFLD, SE_TARG, CALIB_POINTS) 
+    only calibrates for the set of points specified in vector CALIB_POINTS.
+ 
+    Examples:
+ 
+        % Compute ball radii for 10K points drawn from S2 in R3
+        X = randn(10000,3);
+        X = X./vecnorm(X,2,2);
+        [R, ids] = calibrate_neighborhoods(X, 2, 0.01);
+ 
+        % Only calibrate first 100 points;
+        [R, ids] = calibrate_neighborhoods(X, 2, 0.01, [1:100]');
+ 
+    See also manifold_curvature, calibrate_neighborhoods.
+ 
+    Authors: Duluxan Sritharan & Shu Wang. Harvard Medical School.
+
 To compute curvatures at a specific length scale for each point use the `curvature_at_length_scale` function.
 
 ```MATLAB
@@ -149,42 +185,6 @@ To compute curvatures at a specific length scale for each point use the `curvatu
   
     See also manifold_curvature, calibrate_neighborhoods.
 
-    Authors: Duluxan Sritharan & Shu Wang. Harvard Medical School.
-
-To choose `se_targ`, use the `calibrate_neighborhoods` function and verify if the distribution of GOF p-values is flat and the neighborhood sizes are appropriate given the global length scale of the data.
-
-```MATLAB
->> help calibrate_neighborhoods
-```
-
-    calibrate_neighborhoods computes point-wise ball radii for regression
- 
-    [BALL_R, CALIB_POINTS, GOF, N_NEIGHBORS] = ...
-    calibrate_neighborhoods(DATA, DIM_MFLD, SE_TARG) computes the ball 
-    radius at each point (row of DATA) needed to achieve a target 
-    uncertainty of SE_TARG for the diagonal coefficients in the Second 
-    Fundamental Form, assuming the manifold dimension is DIM_MFLD. 
-    CALIB_POINTS is a vector of point IDs for which calibration was 
-    successful, and BALL_R is a vector of corresponding ball radii. The
-    function also returns goodness-of-fits, GOF, and the number of points 
-    in the ball, N_NEIGHBORS, for each calibration point.
- 
-    [BALL_R, CALIB_POINTS, GOF, N_NEIGHBORS] = ...
-    calibrate_neighborhoods(DATA, DIM_MFLD, SE_TARG, CALIB_POINTS) 
-    only calibrates for the set of points specified in vector CALIB_POINTS.
- 
-    Examples:
- 
-        % Compute ball radii for 10K points drawn from S2 in R3
-        X = randn(10000,3);
-        X = X./vecnorm(X,2,2);
-        [R, ids] = calibrate_neighborhoods(X, 2, 0.01);
- 
-        % Only calibrate first 100 points;
-        [R, ids] = calibrate_neighborhoods(X, 2, 0.01, [1:100]');
- 
-    See also manifold_curvature, calibrate_neighborhoods.
- 
     Authors: Duluxan Sritharan & Shu Wang. Harvard Medical School.
 
 ## Troubleshooting

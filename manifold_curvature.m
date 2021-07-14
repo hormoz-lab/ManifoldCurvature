@@ -8,7 +8,7 @@ function manifold_curvature(outdir, data, dim_mfld, se_targ, varargin)
 %   Form (2FF). The following files are saved to OUTDIR:
 %
 %   Curvature.mat - contains all variables including scalar curvatures,
-%     errorbars, goodness-of-fits, Hessian matrices for the 2FF (upper 
+%     standard errors, goodness-of-fits, Hessian matrices for the 2FF (upper 
 %     triangular in column-major order), covariance matrices for 2FF
 %     (upper triangular in column-major order), calibrated ball radii, 
 %     and the Voronoi cells used to map calibration points to datapoints.
