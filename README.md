@@ -6,7 +6,9 @@ This code computes the point-wise scalar curvature for a set of datapoints. It w
 
 Please cite the [companion paper](https://doi.org/10.1101/2021.01.08.425885) if you use this software package:
 
-> D. Sritharan*, S. Wang*, S. Hormoz. "Computing the Riemannian curvature of image patch and single-cell RNA sequencing data manifolds using extrinsic differential geometry." bioRxiv(2021).
+> D. Sritharan*, S. Wang*, S. Hormoz. "Computing the Riemannian curvature of image patch and single-cell RNA sequencing data manifolds using extrinsic differential geometry." PNAS (2021), https://doi.org/10.1073/pnas.2100473118.
+
+To reproduce all the results and figures from the paper, please [visit the paper repository](https://gitlab.com/hormozlab/pnas_2021_curvature).
 
 ## Download
 

@@ -51,8 +51,8 @@ function curvature_at_length_scale(outdir, data, dim_mfld, ball_r, varargin)
 %
 %   D. Sritharan*, S. Wang*, S. Hormoz. "Computing the Riemannian 
 %   curvature of image patch and single-cell RNA sequencing data 
-%   manifolds using extrinsic differential geometry." bioRxiv(2021), 
-%   https://doi.org/10.1101/2021.01.08.425885
+%   manifolds using extrinsic differential geometry." PNAS (2021),
+%   https://doi.org/10.1073/pnas.2100473118
 %
 %   Authors: Duluxan Sritharan & Shu Wang. Harvard Medical School.
 
