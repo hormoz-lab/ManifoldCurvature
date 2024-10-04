@@ -8,14 +8,14 @@ Please cite the [companion paper](https://doi.org/10.1073/pnas.2100473118) if yo
 
 > D. Sritharan*, S. Wang*, S. Hormoz. "Computing the Riemannian curvature of image patch and single-cell RNA sequencing data manifolds using extrinsic differential geometry." PNAS (2021), https://doi.org/10.1073/pnas.2100473118.
 
-To reproduce all the results and figures from the paper, please [visit the paper repository](https://gitlab.com/hormozlab/pnas_2021_curvature).
+To reproduce all the results and figures from the paper, please [visit the paper repository](https://.com/hormozlab/pnas_2021_curvature).
 
 ## Download
 
 To download the code into the directory given by CODE_PATH:
 
 ```bash
-$ git clone https://gitlab.com/hormozlab/ManifoldCurvature.git CODE_PATH
+$ git clone https://github.com/hormoz-lab/ManifoldCurvature.git CODE_PATH
 ```
 
 ## Installation
